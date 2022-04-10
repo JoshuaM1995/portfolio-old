@@ -1,7 +1,17 @@
+import { HomeNameText, HomeText, WhoAmIText } from "@styles/home";
+import Typist from "react-typist";
 
 const Home = () => {
   return (
-    <h1 style={{ color: 'white' }}>Hello, world!</h1>
+    <>
+      <HomeText>Hello! I am</HomeText>
+      <HomeNameText>Joshua McNabb</HomeNameText>
+      <WhoAmIText>
+        Passionate Software Developer
+        <Typist.Backspace count={33} delay={200} />
+        Avid Gamer
+      </WhoAmIText>
+    </>
   );
 };
 

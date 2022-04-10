@@ -1,16 +1,17 @@
-import 'normalize.css';
-import '../styles/global.css';
-import { ThemeProvider } from 'styled-components';
-import useDarkMode from 'use-dark-mode';
-import { lightTheme } from '@theme/light';
-import { darkTheme } from '@theme/dark';
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
 import { Terminal, TerminalHeader } from '@components/terminal';
 import { TerminalTab } from '@components/terminal/TerminalTab/TerminalTab';
 import { TerminalTabs } from '@components/terminal/TerminalTabs/TerminalTabs';
 import { BlankTerminalTab } from '@styles/terminal/blankTerminalTab';
+import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
+import { darkTheme } from '@theme/dark';
+import { lightTheme } from '@theme/light';
+import 'normalize.css';
+import { useEffect, useState } from 'react';
+import 'react-typist/dist/Typist.css';
+import { ThemeProvider } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
+import '../styles/global.css';
 
 const App = ({ Component, pageProps }: any) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,7 +41,9 @@ const App = ({ Component, pageProps }: any) => {
           </TerminalTabs>
         </TerminalTabsContainer>
 
-        <Component {...pageProps} />
+        <TerminalTabPanel>
+          <Component {...pageProps} />
+        </TerminalTabPanel>
       </Terminal>
     </ThemeProvider>
   );

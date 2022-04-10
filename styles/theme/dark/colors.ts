@@ -1,4 +1,5 @@
 export const colors = {
+  text: '#fff',
   background: '#020408',
   terminal: {
     background: '#0d1116',
@@ -20,5 +21,10 @@ export const colors = {
         borderTop: '#B15A64',
       },
     },
+  },
+  home: {
+    text: '#E1E5EC',
+    nameText: '#fff',
+    whoAmIText: '#76BCFA',
   },
 };
