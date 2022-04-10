@@ -1,6 +1,6 @@
-import { faChevronRight, faHistory } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { HomeContainer, HomeNameText, HomeText, ProjectCard, ProjectCardCode, ProjectCardCodeLink, projectCardCodeStyle, ProjectCardCommits, ProjectCardLink, ProjectCardLinkContainer, ProjectCardName, ProjectCardTitle, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
+import { ProjectCard } from '@components/index';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { HomeContainer, HomeNameText, HomeText, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Typist from "react-typist";
@@ -60,25 +60,19 @@ const Home = () => {
       </WhoAmIWrapper>
 
       <ProjectsWrapper>
-        <ProjectCard>
-          <ProjectCardTitle>
-            <ProjectCardName href="https://github.com/JoshuaM1995/spotalytics" target="_blank">Spotalytics</ProjectCardName>
-            <ProjectCardCommits href="https://github.com/JoshuaM1995/spotalytics/commits/master" target="_blank">
-              {!error && <><FontAwesomeIcon icon={faHistory} /> {data?.count ?? 0} commits</>}
-            </ProjectCardCommits>
-          </ProjectCardTitle>
-
-          <ProjectCardCodeLink href="https://spotalytics.netlify.app" target="_blank" rel="noreferrer">
-            <ProjectCardCode language="typescript" showLineNumbers style={projectCardCodeStyle(colors)}>
-              {`/**
+        <ProjectCard
+          title="Spotalytics"
+          titleUrl="https://github.com/JoshuaM1995/spotalytics"
+          commits={data?.count ?? 0}
+          commitsUrl="https://github.com/JoshuaM1995/spotalytics/commits/master"
+          projectUrl="https://spotalytics.netlify.app"
+          code={`/**
 * Integrated Spotify API.
 * Added the following features:
 * Dashboard (artists, albums, etc.)
 * Analytics (tastes, countries)
 */`}
-            </ProjectCardCode>
-          </ProjectCardCodeLink>
-        </ProjectCard>
+        />
       </ProjectsWrapper>
     </HomeContainer>
   );
