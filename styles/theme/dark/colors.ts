@@ -15,6 +15,11 @@ export const colors = {
       text: '#777F88',
       background: '#020408',
       borderRight: '#2c313e',
+      tree: {
+        selected: {
+          background: '#2c313e',
+        },
+      },
     },
     tabs: {
       container: {

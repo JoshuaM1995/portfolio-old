@@ -13,6 +13,7 @@ import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
 import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
 import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtons';
+import { Theme } from '@styles/theme';
 import { darkTheme } from '@theme/dark';
 import { lightTheme } from '@theme/light';
 import { useRouter } from 'next/router';
@@ -30,16 +31,23 @@ config.autoAddCss = false
 const App = ({ Component, pageProps }: any) => {
   const [isMounted, setIsMounted] = useState(false);
   const { value } = useDarkMode(true);
-  const theme = value ? darkTheme : lightTheme;
+  const theme: Theme = value ? darkTheme : lightTheme;
   const { route } = useRouter();
   const shouldShowSidebar = route === '/about';
+
+  const { colors } = theme;
 
   const body = (
     <ThemeProvider theme={theme}>
       <style jsx global>{`
         body {
-          background-color: ${theme.colors.background};
+          background-color: ${colors.background};
         }
+
+        .rc-tree-node-selected {
+            background: ${colors.terminal.sidebar.tree.selected.background};
+            box-shadow: none;
+          }
       `}</style>
       <Terminal>
         <TerminalHeader>

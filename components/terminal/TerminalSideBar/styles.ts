@@ -1,4 +1,5 @@
 import { styled } from '@styles/theme';
+import { TreeProps } from 'rc-tree';
 
 export const TerminalSideBarContainer = styled.div`
   color: ${({ theme: { colors } }) => colors.terminal.sidebar.text};
@@ -22,3 +23,7 @@ export const TerminalSideBarText = styled.p`
 export const TerminalSideBarTreeContainer = styled.div`
   margin-top: 10px;
 `;
+
+export const treeStyle: TreeProps['style'] = {
+  border: '1px solid #000',
+};
