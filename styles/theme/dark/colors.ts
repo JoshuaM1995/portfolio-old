@@ -5,5 +5,12 @@ export const colors = {
     header: {
       text: '#404448',
     },
+    tabs: {
+      container: {
+        border: '#2c313e',
+        boxShadow: '#090a0e',
+      },
+      background: '#020408',
+    },
   },
 };

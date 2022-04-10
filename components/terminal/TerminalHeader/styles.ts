@@ -6,5 +6,4 @@ export const TerminalHeaderContainer = styled.div`
   justify-content: center;
   height: 40px;
   color: ${({ theme: { colors } }) => colors.terminal.header.text};
-  font-family: 'Roboto Mono', monospace;
 `;
