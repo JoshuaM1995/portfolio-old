@@ -1,4 +1,4 @@
-import { faHistory } from '@fortawesome/free-solid-svg-icons'
+import { faHistory, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { colors } from '@styles/theme/dark/colors'
 import React from 'react'
@@ -11,15 +11,19 @@ interface ProjectCardProps {
   commitsUrl: string;
   projectUrl: string;
   code: string;
+  isLoading?: boolean;
 };
 
-export const ProjectCard = ({ title, titleUrl, commits, commitsUrl, projectUrl, code }: ProjectCardProps) => {
+export const ProjectCard = ({ title, titleUrl, commits, commitsUrl, projectUrl, code, isLoading }: ProjectCardProps) => {
   return (
     <ProjectCardContainer>
       <ProjectCardTitle>
         <ProjectCardName href={titleUrl} target="_blank">{title}</ProjectCardName>
         <ProjectCardCommits href={commitsUrl} target="_blank">
-          <FontAwesomeIcon icon={faHistory} /> {commits} commits
+          <FontAwesomeIcon
+            icon={isLoading ? faSpinner : faHistory}
+            className={isLoading ? 'spinner' : undefined}
+          /> {isLoading ? 'Loading commits...' : `${commits} commits`}
         </ProjectCardCommits>
       </ProjectCardTitle>
 

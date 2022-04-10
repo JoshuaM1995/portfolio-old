@@ -1,25 +1,16 @@
 import { ProjectCard } from '@components/index';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import useApiRequest from '@hooks/useApiRequest';
 import { HomeContainer, HomeNameText, HomeText, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
-import axios from 'axios';
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { useQuery } from 'react-query';
 import Typist from "react-typist";
 
 const Home = () => {
   const [whereToValue, setWhereToValue] = useState('');
   const { push } = useRouter();
   const inputRef = useRef<HTMLInputElement>();
-
-  const { data: { data }, isLoading, isError } = useQuery<any, any, { data: { count: number } }>('spotalytics-commits', ({ signal }) =>
-    axios.get('/api/github/repo/spotalytics', {
-      signal,
-    }),
-    { refetchOnWindowFocus: false, refetchOnMount: false }
-  );
-
-  console.log({ data, isError, isLoading })
+  const { data, isLoading } = useApiRequest('spotalytics-commits', '/github/repo/spotalytics', { refetchOnWindowFocus: false, refetchOnMount: false });
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -27,6 +18,10 @@ const Home = () => {
 
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
+      if (whereToValue === 'hello') {
+        alert("You're already here, silly")
+      }
+
       if (whereToValue === 'about') {
         push('/about');
       }
@@ -58,12 +53,18 @@ const Home = () => {
         <WhereToInputContainer>
           <WhereToInputChevronIcon icon={faChevronRight} />
           <WhereToInputCommand>open</WhereToInputCommand>
-          <WhereToInput ref={inputRef} value={whereToValue} onChange={({ target: { value } }) => setWhereToValue(value)} onKeyDown={handleKeyDown} />
+          <WhereToInput
+            ref={inputRef}
+            value={whereToValue}
+            onChange={({ target: { value } }) => setWhereToValue(value)}
+            onKeyDown={handleKeyDown}
+          />
         </WhereToInputContainer>
       </WhoAmIWrapper>
 
       <ProjectsWrapper>
         <ProjectCard
+          isLoading={isLoading}
           title="Spotalytics"
           titleUrl="https://github.com/JoshuaM1995/spotalytics"
           commits={data?.count ?? 0}
