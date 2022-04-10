@@ -1,8 +1,12 @@
 import React, { PropsWithChildren } from 'react'
 import { TerminalTabContainer } from './styles'
 
-export const TerminalTab = ({ children }: PropsWithChildren<{}>) => {
+interface TerminalTabProps {
+  isSelected?: boolean;
+};
+
+export const TerminalTab = ({ isSelected, children }: PropsWithChildren<TerminalTabProps>) => {
   return (
-    <TerminalTabContainer>{children}</TerminalTabContainer>
+    <TerminalTabContainer isSelected={isSelected}>{children}</TerminalTabContainer>
   )
 }

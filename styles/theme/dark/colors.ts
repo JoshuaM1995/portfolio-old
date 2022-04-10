@@ -10,7 +10,15 @@ export const colors = {
         border: '#2c313e',
         boxShadow: '#090a0e',
       },
+      text: '#666d75',
       background: '#020408',
+      borderBottom: '#2c313e',
+      borderRight: '#181D26',
+      selected: {
+        text: '#A88440',
+        background: '#0D1116',
+        borderTop: '#B15A64',
+      },
     },
   },
 };
