@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import { TerminalTabContainer } from './styles'
 
 interface TerminalTabProps {

@@ -11,6 +11,11 @@ export const colors = {
       minimize: '#EBCB8B',
       maximize: '#A3BD8C',
     },
+    sidebar: {
+      text: '#777F88',
+      background: '#020408',
+      borderRight: '#2c313e',
+    },
     tabs: {
       container: {
         border: '#2c313e',

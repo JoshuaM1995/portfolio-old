@@ -1,24 +1,28 @@
 import { Terminal, TerminalHeader } from '@components/terminal';
 import TerminalDateTime from '@components/terminal/TerminalDateTime/TerminalDateTime';
+import { TerminalSideBar } from '@components/terminal/TerminalSideBar/TerminalSideBar';
 import { TerminalTab } from '@components/terminal/TerminalTab/TerminalTab';
 import { TerminalTabs } from '@components/terminal/TerminalTabs/TerminalTabs';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { BlankTerminalTab } from '@styles/terminal/blankTerminalTab';
-import { TerminalFooter, TerminalFooterLinksContainer, TerminalFooterFindMeAtContainer, TerminalFooterLink, TerminalFooterLinkIcon } from '@styles/terminal/terminalFooter';
+import { TerminalBodyContainer } from '@styles/terminal/terminalBody';
+import { TerminalFooter, TerminalFooterFindMeAtContainer, TerminalFooterLink, TerminalFooterLinkIcon, TerminalFooterLinksContainer } from '@styles/terminal/terminalFooter';
 import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
 import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
-import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtonts';
+import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtons';
 import { darkTheme } from '@theme/dark';
 import { lightTheme } from '@theme/light';
+import { useRouter } from 'next/router';
 import 'normalize.css';
+import "rc-tree/assets/index.css";
 import { useEffect, useState } from 'react';
 import 'react-typist/dist/Typist.css';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
-import '../styles/global.css';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import '../styles/global.scss';
 
 // Required to work with next.js
 config.autoAddCss = false
@@ -27,6 +31,8 @@ const App = ({ Component, pageProps }: any) => {
   const [isMounted, setIsMounted] = useState(false);
   const { value } = useDarkMode(true);
   const theme = value ? darkTheme : lightTheme;
+  const { route } = useRouter();
+  const shouldShowSidebar = route === '/about';
 
   const body = (
     <ThemeProvider theme={theme}>
@@ -48,18 +54,22 @@ const App = ({ Component, pageProps }: any) => {
           {/* <DarkModeToggle /> */}
         </TerminalHeader>
 
-        <TerminalTabsContainer>
-          <TerminalTabs>
-            <TerminalTab link="/">Hello.tsx</TerminalTab>
-            <TerminalTab link="/about">About.tsx</TerminalTab>
-            <TerminalTab link="/projects">Projects.tsx</TerminalTab>
-            <BlankTerminalTab />
-          </TerminalTabs>
-        </TerminalTabsContainer>
+        <TerminalBodyContainer shouldShowSidebar={shouldShowSidebar}>
+          {shouldShowSidebar && (<TerminalSideBar />)}
 
-        <TerminalTabPanel>
-          <Component {...pageProps} />
-        </TerminalTabPanel>
+          <TerminalTabsContainer>
+            <TerminalTabs>
+              <TerminalTab link="/">Hello.tsx</TerminalTab>
+              <TerminalTab link="/about">About.tsx</TerminalTab>
+              <TerminalTab link="/projects">Projects.tsx</TerminalTab>
+              <BlankTerminalTab />
+            </TerminalTabs>
+          </TerminalTabsContainer>
+
+          <TerminalTabPanel>
+            <Component {...pageProps} />
+          </TerminalTabPanel>
+        </TerminalBodyContainer>
 
         <TerminalFooter>
           <TerminalFooterLinksContainer>

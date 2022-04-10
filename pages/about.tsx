@@ -1,8 +1,15 @@
-import React from 'react'
+import { codeStyle } from "@styles/about";
+import { ProjectCardCode } from "@styles/home";
+import { aboutContent } from "content/about/about";
+import { useTheme } from "styled-components";
 
 const About = () => {
+  const { colors } = useTheme();
+
   return (
-    <h1 style={{ color: 'white' }}>about me!</h1>
+    <ProjectCardCode language="typescript" showLineNumbers style={codeStyle(colors)}>
+      {aboutContent}
+    </ProjectCardCode>
   )
 }
 

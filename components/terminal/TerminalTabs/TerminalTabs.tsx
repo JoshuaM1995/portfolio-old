@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import { TerminalTabsContainer } from './styles'
 
 export const TerminalTabs = ({ children }: PropsWithChildren<{}>) => {
