@@ -29,5 +29,6 @@ export const colors = {
     text: '#E1E5EC',
     nameText: '#fff',
     whoAmIText: '#76BCFA',
+    whereToText: '#c89ff2',
   },
 };
