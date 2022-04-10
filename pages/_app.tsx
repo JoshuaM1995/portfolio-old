@@ -1,9 +1,15 @@
 import { Terminal, TerminalHeader } from '@components/terminal';
+import TerminalDateTime from '@components/terminal/TerminalDateTime/TerminalDateTime';
 import { TerminalTab } from '@components/terminal/TerminalTab/TerminalTab';
 import { TerminalTabs } from '@components/terminal/TerminalTabs/TerminalTabs';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { BlankTerminalTab } from '@styles/terminal/blankTerminalTab';
+import { TerminalFooter, TerminalFooterLinksContainer, TerminalFooterFindMeAtContainer, TerminalFooterLink, TerminalFooterLinkIcon } from '@styles/terminal/terminalFooter';
+import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
 import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
+import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtonts';
 import { darkTheme } from '@theme/dark';
 import { lightTheme } from '@theme/light';
 import 'normalize.css';
@@ -12,10 +18,7 @@ import 'react-typist/dist/Typist.css';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import '../styles/global.css';
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtonts';
-import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 // Required to work with next.js
 config.autoAddCss = false
@@ -57,6 +60,23 @@ const App = ({ Component, pageProps }: any) => {
         <TerminalTabPanel>
           <Component {...pageProps} />
         </TerminalTabPanel>
+
+        <TerminalFooter>
+          <TerminalFooterLinksContainer>
+            <TerminalFooterFindMeAtContainer>
+              find me at:
+            </TerminalFooterFindMeAtContainer>
+
+            <TerminalFooterLink href="https://github.com/JoshuaM1995" target="_blank">
+              <TerminalFooterLinkIcon icon={faGithub} />
+            </TerminalFooterLink>
+            <TerminalFooterLink href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
+              <TerminalFooterLinkIcon icon={faLinkedin} />
+            </TerminalFooterLink>
+          </TerminalFooterLinksContainer>
+
+          <TerminalDateTime />
+        </TerminalFooter>
       </Terminal>
     </ThemeProvider>
   );

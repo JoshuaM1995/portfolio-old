@@ -14,14 +14,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { repo } = req.query;
-  console.log('repo', repo);
   const commits = (
     await octokit.repos.listCommits({
       owner: 'JoshuaM1995',
       repo: repo as string,
       per_page: 1,
     })
-  ).data;
+    ).data;
   const latestCommit = commits[0];
   const {
     data: { ahead_by },

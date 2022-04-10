@@ -31,6 +31,10 @@ export const colors = {
       comment: '#8c949e',
       background: '#0B0D12',
     },
+    footer: {
+      text: '#737B84',
+      borderTop: '#272C38',
+    },
   },
   home: {
     text: '#E1E5EC',
