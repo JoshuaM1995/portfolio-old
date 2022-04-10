@@ -21,6 +21,9 @@ export const colors = {
         borderTop: '#B15A64',
       },
     },
+    comment: {
+      color: '#8c949e',
+    },
   },
   home: {
     text: '#E1E5EC',

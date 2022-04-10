@@ -12,6 +12,11 @@ import 'react-typist/dist/Typist.css';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import '../styles/global.css';
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
+// Required to work with next.js
+config.autoAddCss = false
 
 const App = ({ Component, pageProps }: any) => {
   const [isMounted, setIsMounted] = useState(false);
