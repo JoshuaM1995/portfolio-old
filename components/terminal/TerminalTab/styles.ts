@@ -1,6 +1,9 @@
 import { styled } from '@styles/theme';
 
-export const TerminalTabContainer = styled.div<{ isSelected?: boolean }>`
+export const TerminalTabContainer = styled.button<{ isSelected?: boolean }>`
+  // Remove default button styles
+  all: unset;
+
   color: ${({ theme: { colors }, isSelected }) =>
     isSelected
       ? colors.terminal.tabs.selected.text
@@ -25,8 +28,5 @@ export const TerminalTabContainer = styled.div<{ isSelected?: boolean }>`
   justify-content: center;
   font-size: 0.8rem;
   font-weight: ${({ isSelected }) => (isSelected ? 600 : 'normal')};
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

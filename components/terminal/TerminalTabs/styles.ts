@@ -5,5 +5,5 @@ export const TerminalTabsContainer = styled.div`
   border-top: ${({ theme: { colors } }) =>
     `1px solid ${colors.terminal.tabs.container.border}`};
   display: flex;
-  height: 45px;
+  height: 40px;
 `;
