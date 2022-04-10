@@ -6,6 +6,11 @@ export const colors = {
     header: {
       text: '#404448',
     },
+    windowButtons: {
+      close: '#BF616A',
+      minimize: '#EBCB8B',
+      maximize: '#A3BD8C',
+    },
     tabs: {
       container: {
         border: '#2c313e',
@@ -21,8 +26,10 @@ export const colors = {
         borderTop: '#B15A64',
       },
     },
-    comment: {
-      color: '#8c949e',
+    code: {
+      text: '#fff',
+      comment: '#8c949e',
+      background: '#0B0D12',
     },
   },
   home: {

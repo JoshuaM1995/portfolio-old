@@ -14,6 +14,8 @@ import useDarkMode from 'use-dark-mode';
 import '../styles/global.css';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtonts';
+import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
 
 // Required to work with next.js
 config.autoAddCss = false
@@ -32,7 +34,13 @@ const App = ({ Component, pageProps }: any) => {
       `}</style>
       <Terminal>
         <TerminalHeader>
-          joshua_mcnabb
+          <TerminalWindowButtonContainer>
+            <TerminalWindowButton type="close" />
+            <TerminalWindowButton type="minimize" />
+            <TerminalWindowButton type="maximize" />
+          </TerminalWindowButtonContainer>
+
+          <TerminalHeaderName>joshua_mcnabb</TerminalHeaderName>
 
           {/* <DarkModeToggle /> */}
         </TerminalHeader>
