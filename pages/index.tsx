@@ -1,10 +1,16 @@
-import styled from 'styled-components'
+import { DarkModeToggle } from '@components/DarkModeToggle.tsx/DarkModeToggle';
+import { Terminal, TerminalHeader } from '@components/terminal';
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`
+const Home = () => {
+  return (
+    <Terminal>
+      <TerminalHeader>
+        joshua_mcnabb
 
-export default function Home() {
-  return <Title>My page</Title>
-}
+        {/* <DarkModeToggle /> */}
+      </TerminalHeader>
+    </Terminal>
+  );
+};
+
+export default Home;
