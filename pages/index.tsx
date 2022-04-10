@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import Typist from "react-typist";
 import { useTheme } from 'styled-components';
 import useSWR from 'swr';
-// import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const fetcher = (...args: any) => fetch(...args).then((res) => res.json())
 
@@ -79,10 +78,6 @@ const Home = () => {
 */`}
             </ProjectCardCode>
           </ProjectCardCodeLink>
-
-          {/* <ProjectCardLinkContainer>
-            <ProjectCardLink href="https://spotalytics.netlify.app" target="_blank" rel="noreferrer">see the project</ProjectCardLink>
-          </ProjectCardLinkContainer> */}
         </ProjectCard>
       </ProjectsWrapper>
     </HomeContainer>
