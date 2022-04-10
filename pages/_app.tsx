@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import 'normalize.css';
 import "rc-tree/assets/index.css";
 import { useEffect, useState } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import 'react-typist/dist/Typist.css';
 import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
@@ -29,6 +30,7 @@ import '../styles/global.scss';
 config.autoAddCss = false
 
 const App = ({ Component, pageProps }: any) => {
+  const [queryClient] = useState(() => new QueryClient());
   const [isMounted, setIsMounted] = useState(false);
   const { value } = useDarkMode(true);
   const theme: Theme = value ? darkTheme : lightTheme;
@@ -38,65 +40,69 @@ const App = ({ Component, pageProps }: any) => {
   const { colors } = theme;
 
   const body = (
-    <ThemeProvider theme={theme}>
-      <style jsx global>{`
-        body {
-          background-color: ${colors.background};
-        }
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <ThemeProvider theme={theme}>
+          <style jsx global>{`
+            body {
+              background-color: ${colors.background};
+            }
 
-        .rc-tree-node-selected {
-            background: ${colors.terminal.sidebar.tree.selected.background};
-            box-shadow: none;
-          }
-      `}</style>
-      <Terminal>
-        <TerminalHeader>
-          <TerminalWindowButtonContainer>
-            <TerminalWindowButton type="close" />
-            <TerminalWindowButton type="minimize" />
-            <TerminalWindowButton type="maximize" />
-          </TerminalWindowButtonContainer>
+            .rc-tree-node-selected {
+                background: ${colors.terminal.sidebar.tree.selected.background};
+                box-shadow: none;
+              }
+          `}</style>
+          <Terminal>
+            <TerminalHeader>
+              <TerminalWindowButtonContainer>
+                <TerminalWindowButton type="close" />
+                <TerminalWindowButton type="minimize" />
+                <TerminalWindowButton type="maximize" />
+              </TerminalWindowButtonContainer>
 
-          <TerminalHeaderName>joshua_mcnabb</TerminalHeaderName>
+              <TerminalHeaderName>joshua_mcnabb</TerminalHeaderName>
 
-          {/* <DarkModeToggle /> */}
-        </TerminalHeader>
+              {/* <DarkModeToggle /> */}
+            </TerminalHeader>
 
-        <TerminalBodyContainer shouldShowSidebar={shouldShowSidebar}>
-          {shouldShowSidebar && (<TerminalSideBar />)}
+            <TerminalBodyContainer shouldShowSidebar={shouldShowSidebar}>
+              {shouldShowSidebar && (<TerminalSideBar />)}
 
-          <TerminalTabsContainer>
-            <TerminalTabs>
-              <TerminalTab link="/">Hello.tsx</TerminalTab>
-              <TerminalTab link="/about">About.tsx</TerminalTab>
-              <TerminalTab link="/projects">Projects.tsx</TerminalTab>
-              <BlankTerminalTab />
-            </TerminalTabs>
-          </TerminalTabsContainer>
+              <TerminalTabsContainer>
+                <TerminalTabs>
+                  <TerminalTab link="/">Hello.tsx</TerminalTab>
+                  <TerminalTab link="/about">About.tsx</TerminalTab>
+                  <TerminalTab link="/projects">Projects.tsx</TerminalTab>
+                  <BlankTerminalTab />
+                </TerminalTabs>
+              </TerminalTabsContainer>
 
-          <TerminalTabPanel>
-            <Component {...pageProps} />
-          </TerminalTabPanel>
-        </TerminalBodyContainer>
+              <TerminalTabPanel>
+                <Component {...pageProps} />
+              </TerminalTabPanel>
+            </TerminalBodyContainer>
 
-        <TerminalFooter>
-          <TerminalFooterLinksContainer>
-            <TerminalFooterFindMeAtContainer>
-              find me at:
-            </TerminalFooterFindMeAtContainer>
+            <TerminalFooter>
+              <TerminalFooterLinksContainer>
+                <TerminalFooterFindMeAtContainer>
+                  find me at:
+                </TerminalFooterFindMeAtContainer>
 
-            <TerminalFooterLink href="https://github.com/JoshuaM1995" target="_blank">
-              <TerminalFooterLinkIcon icon={faGithub} />
-            </TerminalFooterLink>
-            <TerminalFooterLink href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
-              <TerminalFooterLinkIcon icon={faLinkedin} />
-            </TerminalFooterLink>
-          </TerminalFooterLinksContainer>
+                <TerminalFooterLink href="https://github.com/JoshuaM1995" target="_blank">
+                  <TerminalFooterLinkIcon icon={faGithub} />
+                </TerminalFooterLink>
+                <TerminalFooterLink href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
+                  <TerminalFooterLinkIcon icon={faLinkedin} />
+                </TerminalFooterLink>
+              </TerminalFooterLinksContainer>
 
-          <TerminalDateTime />
-        </TerminalFooter>
-      </Terminal>
-    </ThemeProvider>
+              <TerminalDateTime />
+            </TerminalFooter>
+          </Terminal>
+        </ThemeProvider>
+      </Hydrate>
+    </QueryClientProvider>
   );
 
   useEffect(() => {
@@ -111,4 +117,4 @@ const App = ({ Component, pageProps }: any) => {
   return body;
 }
 
-export default App
+export default App;

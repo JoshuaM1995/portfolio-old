@@ -27,16 +27,6 @@ export const ProjectCardCommits = styled.a`
   text-decoration: none;
 `;
 
-// export const ProjectCardCode = styled.div`
-//   color: ${({ theme: { colors } }) => colors.terminal.code.comment};
-//   background: #0b0d12;
-//   font-size: 0.8rem;
-//   border: 1px solid #05070b;
-//   height: 50%;
-//   border-radius: 8px;
-//   padding: 2rem;
-// `;
-
 export const ProjectCardCodeLink = styled.a`
   text-decoration: none;
 `;

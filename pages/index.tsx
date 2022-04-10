@@ -1,22 +1,25 @@
 import { ProjectCard } from '@components/index';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { HomeContainer, HomeNameText, HomeText, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
+import axios from 'axios';
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { useQuery } from 'react-query';
 import Typist from "react-typist";
-import { useTheme } from 'styled-components';
-import useSWR from 'swr';
-
-const fetcher = (...args: any) => fetch(...args).then((res) => res.json())
 
 const Home = () => {
   const [whereToValue, setWhereToValue] = useState('');
   const { push } = useRouter();
-  const { data, error, isValidating: isLoading } = useSWR<{ count: number }>('/api/github/repo/spotalytics', fetcher);
   const inputRef = useRef<HTMLInputElement>();
-  const { colors } = useTheme();
 
-  console.log({ data, error, isLoading })
+  const { data: { data }, isLoading, isError } = useQuery<any, any, { data: { count: number } }>('spotalytics-commits', ({ signal }) =>
+    axios.get('/api/github/repo/spotalytics', {
+      signal,
+    }),
+    { refetchOnWindowFocus: false, refetchOnMount: false }
+  );
+
+  console.log({ data, isError, isLoading })
 
   useEffect(() => {
     inputRef.current?.focus();
