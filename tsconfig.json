@@ -36,6 +36,9 @@
       ],
       "@hooks/*": [
         "hooks/*"
+      ],
+      "@content/*": [
+        "content/*"
       ]
     }
   },

@@ -4,6 +4,7 @@ import TerminalDateTime from '@components/terminal/TerminalDateTime/TerminalDate
 import { TerminalSideBar } from '@components/terminal/TerminalSideBar/TerminalSideBar';
 import { TerminalTab } from '@components/terminal/TerminalTab/TerminalTab';
 import { TerminalTabs } from '@components/terminal/TerminalTabs/TerminalTabs';
+import { aboutContent } from '@content/about';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -17,6 +18,7 @@ import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/ter
 import { Theme } from '@styles/theme';
 import { darkTheme } from '@theme/dark';
 import { lightTheme } from '@theme/light';
+import { AboutContext } from 'context/AboutContext';
 import { useRouter } from 'next/router';
 import 'normalize.css';
 import "rc-tree/assets/index.css";
@@ -32,6 +34,7 @@ config.autoAddCss = false
 
 const App = ({ Component, pageProps }: any) => {
   const [queryClient] = useState(() => new QueryClient());
+  const [aboutContext, setAboutContext] = useState(aboutContent);
   const [isMounted, setIsMounted] = useState(false);
   const { value } = useDarkMode(true);
   const theme: Theme = value ? darkTheme : lightTheme;
@@ -66,20 +69,22 @@ const App = ({ Component, pageProps }: any) => {
             </TerminalHeader>
 
             <TerminalBodyContainer shouldShowSidebar={shouldShowSidebar}>
+              <AboutContext.Provider value={[aboutContext, setAboutContext]}>
               {shouldShowSidebar && (<TerminalSideBar />)}
 
-              <TerminalTabsContainer>
-                <TerminalTabs>
-                  <TerminalTab link="/">Hello.tsx</TerminalTab>
-                  <TerminalTab link="/about">About.tsx</TerminalTab>
-                  <TerminalTab link="/projects">Projects.tsx</TerminalTab>
-                  <BlankTerminalTab />
-                </TerminalTabs>
-              </TerminalTabsContainer>
+                <TerminalTabsContainer>
+                  <TerminalTabs>
+                    <TerminalTab link="/">Hello.tsx</TerminalTab>
+                    <TerminalTab link="/about">About.tsx</TerminalTab>
+                    <TerminalTab link="/projects">Projects.tsx</TerminalTab>
+                    <BlankTerminalTab />
+                  </TerminalTabs>
+                </TerminalTabsContainer>
 
-              <TerminalTabPanel>
-                <Component {...pageProps} />
-              </TerminalTabPanel>
+                <TerminalTabPanel>
+                  <Component {...pageProps} />
+                </TerminalTabPanel>
+              </AboutContext.Provider>
             </TerminalBodyContainer>
 
             <TerminalFooter>
