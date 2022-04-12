@@ -3,7 +3,7 @@ import { hikingContent, laravelContent, listeningToMusicContent, longboardingCon
 import { videoGamesContent } from "@content/interests/free-time/video-games";
 import noContent from "@content/noContent";
 import { faLaravel, faMarkdown, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
-import { faFolder } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faFolder } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AboutContext } from "context/AboutContext";
 import Tree, { TreeProps } from "rc-tree";
@@ -20,6 +20,7 @@ export const TerminalSideBar = () => {
       key: '0',
       title: 'MY INTERESTS',
       icon: <FontAwesomeIcon icon={faFolder} color={treeIconColor.folder} />,
+      selectable: false,
       children: [
         { key: '0-0', title: 'laravel.php', icon: <FontAwesomeIcon icon={faLaravel} color={treeIconColor.laravel} /> },
         { key: '0-1', title: 'node.js', icon: <FontAwesomeIcon icon={faNodeJs} color={treeIconColor.nodeJS} /> },
@@ -28,6 +29,7 @@ export const TerminalSideBar = () => {
           key: '0-3',
           title: 'Free Time',
           icon: <FontAwesomeIcon icon={faFolder} color={treeIconColor.folder} />,
+          selectable: false,
           children: [
             { key: '0-3-1', title: 'hiking.md', icon: <FontAwesomeIcon icon={faMarkdown} color={treeIconColor.markdown} /> },
             { key: '0-3-2', title: 'longboarding.md', icon: <FontAwesomeIcon icon={faMarkdown} color={treeIconColor.markdown} /> },
