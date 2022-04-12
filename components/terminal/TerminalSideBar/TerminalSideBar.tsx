@@ -1,5 +1,5 @@
 import { aboutContent } from "@content/about";
-import { hikingContent, laravelContent, longboardingContent, nodeContent, reactContent, watchingMoviesContent } from "@content/interests";
+import { hikingContent, laravelContent, listeningToMusicContent, longboardingContent, nodeContent, reactContent, watchingMoviesContent } from "@content/interests";
 import { videoGamesContent } from "@content/interests/free-time/video-games";
 import noContent from "@content/noContent";
 import { faLaravel, faMarkdown, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
@@ -46,8 +46,9 @@ const getTreeData = (): TreeProps['treeData'] => [
         children: [
           { key: '0-3-1', title: 'hiking.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
           { key: '0-3-2', title: 'longboarding.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-3', title: 'video_games.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-4', title: 'watching_movies.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
+          { key: '0-3-3', title: 'listening_to_music.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
+          { key: '0-3-4', title: 'video_games.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
+          { key: '0-3-5', title: 'watching_movies.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
         ]
       },
     ],
@@ -77,9 +78,12 @@ const getContentByKey = (key: string) => {
       return longboardingContent;
 
     case '0-3-3':
-      return videoGamesContent;
+      return listeningToMusicContent;
 
     case '0-3-4':
+      return videoGamesContent;
+
+    case '0-3-5':
       return watchingMoviesContent;
 
     case '1':
