@@ -1,13 +1,14 @@
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import useDarkMode from 'use-dark-mode';
-import { DarkModeToggleButton, DarkModeToggleWrapper } from './styles';
+import { DarkModeToggleButton, DarkModeToggleIcon, DarkModeToggleWrapper } from './styles';
 
 export const DarkModeToggle = () => {
-  const { toggle: toggleDarkMode } = useDarkMode(true);
+  const { toggle: toggleDarkMode, value: isDarkMode } = useDarkMode(true);
 
   return (
     <DarkModeToggleWrapper>
       <DarkModeToggleButton type="button" onClick={toggleDarkMode}>
-        Toggle Dark Mode
+        <DarkModeToggleIcon icon={isDarkMode ? faSun : faMoon} />
       </DarkModeToggleButton>
     </DarkModeToggleWrapper>
   )

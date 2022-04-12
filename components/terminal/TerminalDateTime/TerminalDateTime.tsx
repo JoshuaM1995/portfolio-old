@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { useState } from 'react'
 import { useInterval } from 'react-use';
-import { TerminalDateTimeWrapper } from './styles';
+import { TerminalDateTimeContainer } from './styles';
 
 const TerminalDateTime = () => {
   const [date, setDate] = useState(new Date());
@@ -11,7 +11,9 @@ const TerminalDateTime = () => {
   }, 1000);
 
   return (
-    <TerminalDateTimeWrapper>{format(date, 'HH:mm:ss MM/dd/yyyy')}</TerminalDateTimeWrapper>
+    <TerminalDateTimeContainer>
+      {format(date, 'HH:mm:ss MM/dd/yyyy')}
+    </TerminalDateTimeContainer>
   );
 }
 

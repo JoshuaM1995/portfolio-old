@@ -22,7 +22,7 @@ export const ProjectCard = ({ title, titleUrl, commits, commitsUrl, projectUrl, 
         <ProjectCardCommits href={commitsUrl} target="_blank">
           <FontAwesomeIcon
             icon={isLoading ? faSpinner : faHistory}
-            className={isLoading ? 'spinner' : undefined}
+            spin={isLoading}
           /> {isLoading ? 'Loading commits...' : `${commits} commits`}
         </ProjectCardCommits>
       </ProjectCardTitle>

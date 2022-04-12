@@ -1,3 +1,4 @@
+import { DarkModeToggle } from '@components/index';
 import { Terminal, TerminalHeader } from '@components/terminal';
 import TerminalDateTime from '@components/terminal/TerminalDateTime/TerminalDateTime';
 import { TerminalSideBar } from '@components/terminal/TerminalSideBar/TerminalSideBar';
@@ -8,7 +9,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { BlankTerminalTab } from '@styles/terminal/blankTerminalTab';
 import { TerminalBodyContainer } from '@styles/terminal/terminalBody';
-import { TerminalFooter, TerminalFooterFindMeAtContainer, TerminalFooterLink, TerminalFooterLinkIcon, TerminalFooterLinksContainer } from '@styles/terminal/terminalFooter';
+import { TerminalFooter, TerminalFooterFindMeAtContainer, TerminalFooterLink, TerminalFooterLinkIcon, TerminalFooterLinksContainer, TerminalRightFooterContainer } from '@styles/terminal/terminalFooter';
 import { TerminalHeaderName } from '@styles/terminal/terminalHeader';
 import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
@@ -62,8 +63,6 @@ const App = ({ Component, pageProps }: any) => {
               </TerminalWindowButtonContainer>
 
               <TerminalHeaderName>joshua_mcnabb</TerminalHeaderName>
-
-              {/* <DarkModeToggle /> */}
             </TerminalHeader>
 
             <TerminalBodyContainer shouldShowSidebar={shouldShowSidebar}>
@@ -97,7 +96,10 @@ const App = ({ Component, pageProps }: any) => {
                 </TerminalFooterLink>
               </TerminalFooterLinksContainer>
 
-              <TerminalDateTime />
+              <TerminalRightFooterContainer>
+                <TerminalDateTime />
+                <DarkModeToggle />
+              </TerminalRightFooterContainer>
             </TerminalFooter>
           </Terminal>
         </ThemeProvider>

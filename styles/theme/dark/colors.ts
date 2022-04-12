@@ -43,7 +43,8 @@ export const colors = {
     },
     footer: {
       text: '#737B84',
-      borderTop: '#272C38',
+      border: '#272C38',
+      iconLink: '#737b84',
     },
   },
   home: {

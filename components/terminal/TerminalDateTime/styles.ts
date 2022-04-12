@@ -1,5 +1,10 @@
 import { styled } from '@styles/theme';
 
-export const TerminalDateTimeWrapper = styled.div`
-  margin-right: 25px;
+export const TerminalDateTimeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 25px;
+  border-right: ${({ theme: { colors } }) =>
+    `1px solid ${colors.terminal.footer.border}`};
 `;
