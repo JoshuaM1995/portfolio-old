@@ -53,7 +53,7 @@ const App = ({ Component, pageProps }: any) => {
             }
 
             .rc-tree-node-selected {
-                color: ${colors.terminal.sidebar.tree.selected.color};
+                color: ${colors.terminal.sidebar.tree.selected};
                 background: transparent;
                 font-weight: bold;
                 box-shadow: none;

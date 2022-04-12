@@ -16,8 +16,13 @@ export const colors = {
       background: '#020408',
       borderRight: '#2c313e',
       tree: {
-        selected: {
-          color: '#A78340',
+        selected: '#A78340',
+        icon: {
+          folder: '#89BFD0',
+          laravel: '#FE281B',
+          nodeJS: '#84CE24',
+          react: '#61DAFB',
+          markdown: '#fff',
         },
       },
     },

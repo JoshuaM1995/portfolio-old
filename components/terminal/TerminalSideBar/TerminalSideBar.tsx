@@ -8,10 +8,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AboutContext } from "context/AboutContext";
 import Tree, { TreeProps } from "rc-tree";
 import { useContext } from "react";
+import { useTheme } from "styled-components";
 import { TerminalSideBarContainer, TerminalSideBarText, TerminalSideBarTreeContainer, treeStyle } from "./styles";
 
 export const TerminalSideBar = () => {
   const [, setAboutContext] = useContext(AboutContext);
+  const { colors: { terminal: { sidebar: { tree: { icon: iconColor } } } } } = useTheme();
+
+  const getTreeData = (): TreeProps['treeData'] => [
+    {
+      key: '0',
+      title: 'MY INTERESTS',
+      icon: <FontAwesomeIcon icon={faFolder} color={iconColor.folder} />,
+      children: [
+        { key: '0-0', title: 'laravel.php', icon: <FontAwesomeIcon icon={faLaravel} color={iconColor.laravel} /> },
+        { key: '0-1', title: 'node.js', icon: <FontAwesomeIcon icon={faNodeJs} color={iconColor.nodeJS} /> },
+        { key: '0-2', title: 'React.jsx', icon: <FontAwesomeIcon icon={faReact} color={iconColor.react} /> },
+        {
+          key: '0-3',
+          title: 'Free Time',
+          icon: <FontAwesomeIcon icon={faFolder} color={iconColor.folder} />,
+          children: [
+            { key: '0-3-1', title: 'hiking.md', icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} /> },
+            { key: '0-3-2', title: 'longboarding.md', icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} /> },
+            { key: '0-3-3', title: 'listening_to_music.md', icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} /> },
+            { key: '0-3-4', title: 'video_games.md', icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} /> },
+            { key: '0-3-5', title: 'watching_movies.md', icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} /> },
+          ]
+        },
+      ],
+    },
+    {
+      key: '1',
+      title: 'about_me.md',
+      icon: <FontAwesomeIcon icon={faMarkdown} color={iconColor.markdown} />,
+    },
+  ];
 
   return (
     <TerminalSideBarContainer>
@@ -29,36 +61,6 @@ export const TerminalSideBar = () => {
     </TerminalSideBarContainer>
   );
 };
-
-const getTreeData = (): TreeProps['treeData'] => [
-  {
-    key: '0',
-    title: 'MY INTERESTS',
-    icon: <FontAwesomeIcon icon={faFolder} color="#89BFD0" />,
-    children: [
-      { key: '0-0', title: 'laravel.php', icon: <FontAwesomeIcon icon={faLaravel} color="#FE281B" /> },
-      { key: '0-1', title: 'node.js', icon: <FontAwesomeIcon icon={faNodeJs} color="#84CE24" /> },
-      { key: '0-2', title: 'React.jsx', icon: <FontAwesomeIcon icon={faReact} color="#61DAFB" /> },
-      {
-        key: '0-3',
-        title: 'Free Time',
-        icon: <FontAwesomeIcon icon={faFolder} color="#89BFD0" />,
-        children: [
-          { key: '0-3-1', title: 'hiking.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-2', title: 'longboarding.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-3', title: 'listening_to_music.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-4', title: 'video_games.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-          { key: '0-3-5', title: 'watching_movies.md', icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" /> },
-        ]
-      },
-    ],
-  },
-  {
-    key: '1',
-    title: 'about_me.md',
-    icon: <FontAwesomeIcon icon={faMarkdown} color="#fff" />,
-  },
-];
 
 const getContentByKey = (key: string) => {
   switch (key) {
