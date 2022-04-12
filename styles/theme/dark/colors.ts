@@ -17,7 +17,7 @@ export const colors = {
       borderRight: '#2c313e',
       tree: {
         selected: {
-          background: '#2c313e',
+          color: '#A78340',
         },
       },
     },
