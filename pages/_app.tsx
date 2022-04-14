@@ -97,10 +97,10 @@ const App = ({ Component, pageProps }: any) => {
                   find me at:
                 </TerminalFooterFindMeAtContainer>
 
-                <TerminalFooterLink brand="github" href="https://github.com/JoshuaM1995" target="_blank">
+                <TerminalFooterLink brand="github" href="https://github.com/JoshuaM1995" target="_blank" title="Github">
                   <TerminalFooterLinkIcon icon={faGithub} />
                 </TerminalFooterLink>
-                <TerminalFooterLink brand="linkedin" href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
+                <TerminalFooterLink brand="linkedin" href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank" title="Linkedin">
                   <TerminalFooterLinkIcon icon={faLinkedin} />
                 </TerminalFooterLink>
               </TerminalFooterLinksContainer>

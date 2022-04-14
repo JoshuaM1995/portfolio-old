@@ -1,7 +1,7 @@
 export const baseTheme = {
   colors: {
     brands: {
-      github: '#F2F2F2',
+      github: '#fff',
       linkedin: '#036EAA',
     },
   },
