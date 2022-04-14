@@ -1,6 +1,7 @@
 import { ProjectCard } from '@components/index';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import useApiRequest from '@hooks/useApiRequest';
+import { useCommitData } from '@hooks/useCommitData';
 import { HomeContainer, HomeNameText, HomeText, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +11,7 @@ const Home = () => {
   const [whereToValue, setWhereToValue] = useState('');
   const { push } = useRouter();
   const inputRef = useRef<HTMLInputElement>();
-  const { data, isLoading } = useApiRequest('spotalytics-commits', '/github/repo/spotalytics', { refetchOnWindowFocus: false, refetchOnMount: false });
+  const { data, isLoading } = useCommitData('spotalytics');
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -64,11 +65,10 @@ const Home = () => {
 
       <ProjectsWrapper>
         <ProjectCard
+          repoName="spotalytics"
           isLoading={isLoading}
           title="Spotalytics"
-          titleUrl="https://github.com/JoshuaM1995/spotalytics"
           commits={data?.count ?? 0}
-          commitsUrl="https://github.com/JoshuaM1995/spotalytics/commits/master"
           projectUrl="https://spotalytics.netlify.app"
           code={`/**
 * Integrated Spotify API.

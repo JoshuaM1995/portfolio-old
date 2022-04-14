@@ -6,20 +6,20 @@ import { ProjectCardCode, ProjectCardCodeLink, projectCardCodeStyle, ProjectCard
 
 interface ProjectCardProps {
   title: string;
-  titleUrl: string;
+  repoName: string;
   commits: number;
-  commitsUrl: string;
   projectUrl: string;
   code: string;
   isLoading?: boolean;
+  hasBoxShadow?: boolean;
 };
 
-export const ProjectCard = ({ title, titleUrl, commits, commitsUrl, projectUrl, code, isLoading }: ProjectCardProps) => {
+export const ProjectCard = ({ title, repoName, commits, projectUrl, code, isLoading, hasBoxShadow = true }: ProjectCardProps) => {
   return (
-    <ProjectCardContainer>
+    <ProjectCardContainer hasBoxShadow={hasBoxShadow}>
       <ProjectCardTitle>
-        <ProjectCardName href={titleUrl} target="_blank">{title}</ProjectCardName>
-        <ProjectCardCommits href={commitsUrl} target="_blank">
+        <ProjectCardName href={`https://github.com/JoshuaM1995/${repoName}`} target="_blank">{title}</ProjectCardName>
+        <ProjectCardCommits href={`https://github.com/JoshuaM1995/${repoName}/commits`} target="_blank">
           <FontAwesomeIcon
             icon={isLoading ? faSpinner : faHistory}
             spin={isLoading}

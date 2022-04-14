@@ -1,13 +1,14 @@
 import { styled, Theme } from '@styles/theme';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
-export const ProjectCardContainer = styled.div`
+export const ProjectCardContainer = styled.div<{ hasBoxShadow: boolean }>`
   background: #0d1116;
   border: 1px solid #19242e;
   width: 400px;
   padding: 1rem;
   border-radius: 6px;
-  box-shadow: 0px -25px 50px #17222d, 0px 25px 50px #17222d;
+  box-shadow: ${({ hasBoxShadow }) =>
+    hasBoxShadow ? '0px -25px 50px #17222d, 0px 25px 50px #17222d' : 'none'};
 `;
 
 export const ProjectCardTitle = styled.div`
