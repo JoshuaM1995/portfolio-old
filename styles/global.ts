@@ -7,6 +7,7 @@ export const Link = styled.a`
 
 export const Button = styled.button`
   all: unset;
+  cursor: pointer;
 `;
 
 export const Text = styled.p`
