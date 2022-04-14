@@ -26,7 +26,7 @@ export const TerminalFooterFindMeAtContainer = styled.div`
   height: 100%;
 `;
 
-export const TerminalFooterLink = styled.a`
+export const TerminalFooterLink = styled.a<{ brand: string }>`
   color: ${({ theme: { colors } }) => colors.terminal.footer.iconLink};
   display: flex;
   align-items: center;
@@ -35,6 +35,10 @@ export const TerminalFooterLink = styled.a`
   padding: 0 1rem;
   border-right: ${({ theme: { colors } }) =>
     `1px solid ${colors.terminal.footer.border}`};
+
+  &:hover {
+    color: ${({ theme: { colors }, brand }) => colors.brands[brand]};
+  }
 
   &:first-of-type {
     border-left: ${({ theme: { colors } }) =>

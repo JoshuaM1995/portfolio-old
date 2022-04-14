@@ -16,9 +16,11 @@ import { TerminalTabPanel } from '@styles/terminal/terminalTabPanel';
 import { TerminalTabsContainer } from '@styles/terminal/terminalTabsContainer';
 import { TerminalWindowButton, TerminalWindowButtonContainer } from '@styles/terminal/terminalWindowButtons';
 import { Theme } from '@styles/theme';
+import { baseTheme } from '@styles/theme/base';
 import { darkTheme } from '@theme/dark';
 import { lightTheme } from '@theme/light';
 import { AboutContext } from 'context/AboutContext';
+import _ from 'lodash';
 import { useRouter } from 'next/router';
 import 'normalize.css';
 import "rc-tree/assets/index.css";
@@ -37,7 +39,7 @@ const App = ({ Component, pageProps }: any) => {
   const [aboutContext, setAboutContext] = useState(aboutContent);
   const [isMounted, setIsMounted] = useState(false);
   const { value } = useDarkMode(true);
-  const theme: Theme = value ? darkTheme : lightTheme;
+  const theme: Theme = value ? _.merge(baseTheme, darkTheme) : _.merge(baseTheme, lightTheme);
   const { route } = useRouter();
   const shouldShowSidebar = route === '/about';
 
@@ -95,10 +97,10 @@ const App = ({ Component, pageProps }: any) => {
                   find me at:
                 </TerminalFooterFindMeAtContainer>
 
-                <TerminalFooterLink href="https://github.com/JoshuaM1995" target="_blank">
+                <TerminalFooterLink brand="github" href="https://github.com/JoshuaM1995" target="_blank">
                   <TerminalFooterLinkIcon icon={faGithub} />
                 </TerminalFooterLink>
-                <TerminalFooterLink href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
+                <TerminalFooterLink brand="linkedin" href="https://www.linkedin.com/in/jmcnabb1995/" target="_blank">
                   <TerminalFooterLinkIcon icon={faLinkedin} />
                 </TerminalFooterLink>
               </TerminalFooterLinksContainer>
