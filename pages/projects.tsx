@@ -1,7 +1,7 @@
 import { ProjectCard } from "@components/index";
 import { useCommitData } from "@hooks/useCommitData";
 import { Spacer } from "@styles/global";
-import { OpenInGithubButton, OpenInGithubLink, ProjectCardContainer, ProjectsContainer, TopProjectsCodeComment } from "@styles/projects";
+import { OpenInGithubLink, ProjectCardContainer, ProjectsContainer, TopProjectsCodeComment } from "@styles/projects";
 
 const Projects = () => {
   const { data: spotalyticsCommitData, isLoading: isLoadingSpotalyticsCommitData } = useCommitData('spotalytics');

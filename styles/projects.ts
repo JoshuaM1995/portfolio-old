@@ -19,12 +19,10 @@ export const OpenInGithubLink = styled(Link)`
   color: #7badbd;
   border: 1px solid #222832;
   border-radius: 30px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 15px;
 
   &:hover {
-    background: red;
+    background: #222832;
   }
 `;
-
-export const OpenInGithubButton = styled(Button)``;
