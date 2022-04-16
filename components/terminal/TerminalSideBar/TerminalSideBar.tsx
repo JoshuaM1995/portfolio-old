@@ -98,6 +98,9 @@ const getContentByKey = (key: string) => {
     case '0-2-3':
       return reactContent;
 
+    case '1':
+      return aboutContent;
+
     default:
       return noContent;
   }
