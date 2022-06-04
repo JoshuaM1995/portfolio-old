@@ -1,6 +1,5 @@
-import { DarkModeToggle } from '@components/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { styled, theme } from '@styles/theme';
+import { styled } from '@styles/theme';
 
 export const TerminalFooter = styled.div`
   display: flex;
@@ -37,7 +36,10 @@ export const TerminalFooterLink = styled.a<{ brand: string }>`
     `1px solid ${colors.terminal.footer.border}`};
 
   &:hover {
-    color: ${({ theme: { colors }, brand }) => colors.brands[brand]};
+    color: ${({ theme: { colors }, brand }) => {
+      // @ts-ignore
+      return colors.brands[brand];
+    }};
   }
 
   &:first-of-type {

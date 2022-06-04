@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link, Button, CodeComment } from './global';
+import { CodeComment, Link } from './global';
 
 export const TopProjectsCodeComment = styled(CodeComment)`
   margin-bottom: 30px;

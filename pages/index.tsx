@@ -1,6 +1,5 @@
 import { ProjectCard } from '@components/index';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import useApiRequest from '@hooks/useApiRequest';
 import { useCommitData } from '@hooks/useCommitData';
 import { HomeContainer, HomeNameText, HomeText, ProjectsWrapper, WhereToInput, WhereToInputChevronIcon, WhereToInputCommand, WhereToInputContainer, WhereToNextComment, WhereToNextText, WhoAmIText, WhoAmIWrapper } from "@styles/home";
 import { useRouter } from "next/router";
@@ -55,7 +54,7 @@ const Home = () => {
           <WhereToInputChevronIcon icon={faChevronRight} />
           <WhereToInputCommand>open</WhereToInputCommand>
           <WhereToInput
-            ref={inputRef}
+            ref={inputRef as any}
             value={whereToValue}
             onChange={({ target: { value } }) => setWhereToValue(value)}
             onKeyDown={handleKeyDown}
