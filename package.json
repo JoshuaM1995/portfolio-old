@@ -4,7 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
@@ -31,6 +32,7 @@
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.7.1",
     "@types/lodash": "^4.14.181",
     "@types/node": "15.0.0",
     "@types/react": "17.0.4",
