@@ -12,7 +12,7 @@ export const TerminalSideBarContainer = styled.div`
   font-size: 0.7rem;
   font-weight: 500;
   padding: 0.8rem 0.8rem 0.8rem 1.5rem;
-  overflow-y: scroll;
+  overflow: none;
 `;
 
 export const TerminalSideBarText = styled.p`
