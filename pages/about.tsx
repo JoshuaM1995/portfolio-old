@@ -9,7 +9,12 @@ const About = () => {
   const [aboutContext] = useContext(AboutContext);
 
   return (
-    <ProjectCardCode language="typescript" showLineNumbers style={codeStyle(colors)}>
+    <ProjectCardCode
+      language="typescript"
+      showLineNumbers
+      wrapLines
+      lineProps={{ style: { wordBreak: 'break-all', whiteSpace: 'pre-wrap' } }}
+      style={codeStyle(colors)}>
       {aboutContext}
     </ProjectCardCode>
   )

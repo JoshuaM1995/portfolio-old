@@ -1,8 +1,8 @@
 import { faHistory, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { colors } from '@styles/theme/dark/colors'
 import React from 'react'
 import { ProjectCardCode, ProjectCardCodeLink, projectCardCodeStyle, ProjectCardCommits, ProjectCardContainer, ProjectCardName, ProjectCardTitle } from './styles'
+import { useTheme } from "styled-components";
 
 interface ProjectCardProps {
   title: string;
@@ -15,6 +15,8 @@ interface ProjectCardProps {
 };
 
 export const ProjectCard = ({ title, repoName, commits, projectUrl, code, isLoading, hasBoxShadow = true }: ProjectCardProps) => {
+  const { colors } = useTheme();
+
   return (
     <ProjectCardContainer hasBoxShadow={hasBoxShadow}>
       <ProjectCardTitle>
@@ -28,6 +30,7 @@ export const ProjectCard = ({ title, repoName, commits, projectUrl, code, isLoad
       </ProjectCardTitle>
 
       <ProjectCardCodeLink href={projectUrl} target="_blank" rel="noreferrer">
+        {/* @ts-ignore */}
         <ProjectCardCode language="typescript" showLineNumbers style={projectCardCodeStyle(colors)}>
           {code}
         </ProjectCardCode>

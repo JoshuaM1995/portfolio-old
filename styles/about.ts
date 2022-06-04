@@ -3,7 +3,8 @@ import { Theme } from './theme';
 export const codeStyle = (colors: Theme['colors']) => ({
   hljs: {
     display: 'block',
-    overflowX: 'auto',
+    // overflowX: 'auto',
+    overflow: 'none',
     padding: '0.5em',
     color: colors.terminal.code.text,
     backgroundColor: colors.terminal.background,
